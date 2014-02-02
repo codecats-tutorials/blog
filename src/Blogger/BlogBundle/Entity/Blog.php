@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
  * Blog
  *
  * @ORM\Table()
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Blogger\BlogBundle\Entity\Repository\BlogRepository")
  * @ORM\HasLifecycleCallbacks
  */
 class Blog
@@ -160,9 +160,14 @@ class Blog
      *
      * @return string 
      */
-    public function getBlog()
+    public function getBlog($length = null)
     {
-        return $this->blog;
+        if ($length === null) {
+            return $this->blog;
+        } else {
+            return substr($this->blog, 0, $length);
+        }
+        
     }
 
     /**
