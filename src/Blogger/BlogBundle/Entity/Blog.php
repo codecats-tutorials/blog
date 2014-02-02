@@ -2,6 +2,8 @@
 
 namespace Blogger\BlogBundle\Entity;
 
+use DateTime;
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -57,16 +59,20 @@ class Blog
      */
     private $tags;
 
-    private $comments = array();
     /**
-     * @var \DateTime
+     *
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="blog")
+     */
+    private $comments;
+    /**
+     * @var DateTime
      *
      * @ORM\Column(name="created", type="datetime")
      */
     private $created;
 
     /**
-     * @var \DateTime
+     * @var DateTime
      *
      * @ORM\Column(name="updated", type="datetime")
      */
@@ -77,13 +83,15 @@ class Blog
      */
     public function setUpdateValue() 
     {
-        $this->setUpdated(new \DateTime());
+        $this->setUpdated(new DateTime());
     }
 
     public function __construct() 
     {
-        $this->setCreated(new \DateTime());
-        $this->setUpdated(new \DateTime());
+        $this->comments = new ArrayCollection();
+        
+        $this->setCreated(new DateTime());
+        $this->setUpdated(new DateTime());
     }
 
     /**
@@ -220,7 +228,7 @@ class Blog
     /**
      * Set created
      *
-     * @param \DateTime $created
+     * @param DateTime $created
      * @return Blog
      */
     public function setCreated($created)
@@ -233,7 +241,7 @@ class Blog
     /**
      * Get created
      *
-     * @return \DateTime 
+     * @return DateTime 
      */
     public function getCreated()
     {
@@ -243,7 +251,7 @@ class Blog
     /**
      * Set updated
      *
-     * @param \DateTime $updated
+     * @param DateTime $updated
      * @return Blog
      */
     public function setUpdated($updated)
@@ -256,10 +264,43 @@ class Blog
     /**
      * Get updated
      *
-     * @return \DateTime 
+     * @return DateTime 
      */
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param \Blogger\BlogBundle\Entity\Comment $comments
+     * @return Blog
+     */
+    public function addComment(\Blogger\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param \Blogger\BlogBundle\Entity\Comment $comments
+     */
+    public function removeComment(\Blogger\BlogBundle\Entity\Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
