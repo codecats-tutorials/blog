@@ -26,10 +26,10 @@ class BlogRepository extends EntityRepository
         return $qb->getQuery()->getResult();
     }
     
-    public function createQueryBuilder($alias) 
+ /*   public function createQueryBuilder($alias) 
     {
         return $this->_em->createQueryBuilder()->select($alias)
                 ->from($this->_entityName, $alias)
         ;
-    }
+    }*/
 }
