@@ -4,6 +4,7 @@ namespace Blogger\BlogBundle\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,6 +16,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Blog
 {
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
     /**
      * @var integer
      *
@@ -274,10 +279,10 @@ class Blog
     /**
      * Add comments
      *
-     * @param \Blogger\BlogBundle\Entity\Comment $comments
+     * @param Comment $comments
      * @return Blog
      */
-    public function addComment(\Blogger\BlogBundle\Entity\Comment $comments)
+    public function addComment(Comment $comments)
     {
         $this->comments[] = $comments;
 
@@ -287,9 +292,9 @@ class Blog
     /**
      * Remove comments
      *
-     * @param \Blogger\BlogBundle\Entity\Comment $comments
+     * @param Comment $comments
      */
-    public function removeComment(\Blogger\BlogBundle\Entity\Comment $comments)
+    public function removeComment(Comment $comments)
     {
         $this->comments->removeElement($comments);
     }
@@ -297,7 +302,7 @@ class Blog
     /**
      * Get comments
      *
-     * @return \Doctrine\Common\Collections\Collection 
+     * @return Collection 
      */
     public function getComments()
     {

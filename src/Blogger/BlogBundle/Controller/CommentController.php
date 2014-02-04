@@ -23,9 +23,9 @@ class CommentController extends Controller
         ));
     }
 
-    public function createAction()
+    public function createAction($blog_id)
     {
-        $blog = $this->getBlog($blogId);
+        $blog = $this->getBlog($blog_id);
         
         $comment = new Comment();
         $comment->setBlog($blog);
@@ -35,6 +35,10 @@ class CommentController extends Controller
         $form->submit($request);
         
         if ($form->isValid()) {
+            $em = $this->getDoctrine()->getManager();
+            $em->persist($comment);
+            $em->flush();
+            
             return $this->redirect($this->generateUrl('BloggerBlogBundle_blog_show', array(
                 'id' => $comment->getBlog()->getId().'#comment-'.$comment->getId()
             )));
