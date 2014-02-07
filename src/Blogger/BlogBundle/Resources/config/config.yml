@@ -1,2 +1,3 @@
 parameters:
     blogger_blog.emails.contact_email: ssstrz@gmail.com
+    blogger_blog.comments.lastest_comment_limit: 10
