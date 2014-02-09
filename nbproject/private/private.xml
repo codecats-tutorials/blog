@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/t/www/vhosts/blog.t/htdocs/Symfony/src/Blogger/BlogBundle/Controller/PageController.php</file>
-            <file>file:/home/t/www/vhosts/blog.t/htdocs/Symfony/src/Blogger/BlogBundle/Resources/views/Blog/show.html.twig</file>
-            <file>file:/home/t/www/vhosts/blog.t/htdocs/Symfony/src/Blogger/BlogBundle/Entity/Repository/BlogRepository.php</file>
-            <file>file:/home/t/www/vhosts/blog.t/htdocs/Symfony/src/Blogger/BlogBundle/Resources/views/layout.html.twig</file>
+            <file>file:/home/t/www/vhosts/blog.t/htdocs/Symfony/src/Blogger/BlogBundle/Resources/views/Blog/index.html.twig</file>
+            <file>file:/home/t/www/vhosts/blog.t/htdocs/Symfony/src/Blogger/BlogBundle/Twig/Extensions/BloggerBlogExtension.php</file>
             <file>file:/home/t/www/vhosts/blog.t/htdocs/Symfony/src/Blogger/BlogBundle/Resources/views/Page/sidebar.html.twig</file>
-            <file>file:/home/t/www/vhosts/blog.t/htdocs/Symfony/src/Blogger/BlogBundle/Entity/Comment.php</file>
+            <file>file:/home/t/www/vhosts/blog.t/htdocs/Symfony/src/Blogger/BlogBundle/Resources/config/services.yml</file>
         </group>
     </open-files>
 </project-private>

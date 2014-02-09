@@ -71,6 +71,7 @@ class Comment
         $this->setUpdated(new DateTime());
         
         $this->setApproved(true);
+        $this->setUpdatedValue();
     }
     
     public function loadValidatiomMetadata(ClassMetadata $metadata) 
@@ -85,7 +86,7 @@ class Comment
     }
     
     /**
-     * @ORM\preUpdate
+     * @ORM\PreUpdate
      */
     public function setUpdatedValue()
     {

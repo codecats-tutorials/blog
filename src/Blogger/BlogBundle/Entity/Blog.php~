@@ -4,6 +4,7 @@ namespace Blogger\BlogBundle\Entity;
 
 use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -15,6 +16,10 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Blog
 {
+    public function __toString()
+    {
+        return $this->getTitle();
+    }
     /**
      * @var integer
      *
@@ -24,6 +29,13 @@ class Blog
      */
     private $id;
 
+    /**
+     *
+     * @var string
+     * 
+     * @ORM\Column(name="slug", type="string", length=255)
+     */
+    private $slug;
     /**
      * @var string
      *
@@ -269,5 +281,38 @@ class Blog
     public function getUpdated()
     {
         return $this->updated;
+    }
+
+    /**
+     * Add comments
+     *
+     * @param Comment $comments
+     * @return Blog
+     */
+    public function addComment(Comment $comments)
+    {
+        $this->comments[] = $comments;
+
+        return $this;
+    }
+
+    /**
+     * Remove comments
+     *
+     * @param Comment $comments
+     */
+    public function removeComment(Comment $comments)
+    {
+        $this->comments->removeElement($comments);
+    }
+
+    /**
+     * Get comments
+     *
+     * @return Collection 
+     */
+    public function getComments()
+    {
+        return $this->comments;
     }
 }
