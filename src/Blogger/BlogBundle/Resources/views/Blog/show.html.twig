@@ -5,6 +5,7 @@
 {% block body %}
 <article class="blog">
     <header>
+        <h2>{{ blog.title }}</h2>
         <div class="data">
             <time datetime="{{ blog.created|date('c') }}">{{ blog.created|date('l F j, Y') }}</time>
         </div>

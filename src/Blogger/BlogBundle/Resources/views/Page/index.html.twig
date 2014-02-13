@@ -4,11 +4,11 @@
     {% for blog in blogs %}
 <article class="blog">
     <div class="date"><time datetime="{{ blog.created|date('u') }}">{{ blog.created|date('l, F j, Y') }}</time></div>
-</article>
-<header>
-    <h2><a href="{{ path('BloggerBlogBundle_blog_show', {'id' : blog.id, 'slug' : blog.slug}) }}">{{ blog.title }}</a></h2>
-</header>
 
+    <header>
+        <h2><a href="{{ path('BloggerBlogBundle_blog_show', {'id' : blog.id, 'slug' : blog.slug}) }}">{{ blog.title }}</a></h2>
+    </header>
+</article>
 <img src="{{ asset(['images/', blog.image]|join) }}" />
 <div class="snipped">
     <p>{{ blog.blog(500) }}</p>
